@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
+
+html
+{
+	background: url("media/stars.jpg");
+	width: 100%;
+	height: 100%;
+}
+*
+{
+	font-family: 'Nunito', sans-serif;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+#ScreenItems
+{
+	text-align: center;
+	justify-content: center;
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+#homeDiv
+{
+	display: none;
+}
+
+#registerDiv
+{
+	display: none;
+}
+
+#loginDiv
+{
+	display: none;
+}
+
+#settingsDiv
+{
+	display: none;
+}
+
+#GameDiv
+{
+	display: none;
+}
+
+#settings_display
+{
+	float: left;
+	width: 90%;
+	margin-left: 60%;
+}
+
+#game
+{
+	margin-left: 10%;
+}
+
+#gameHeader
+{
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+div.settingOption {
+	
+    position: fixed;
+    top:5%;
+    color: blanchedalmond;
+    text-align: center;
+    left:15%;
+}
+
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	align-items: center;
+	justify-content: center;
+}
+
+h1
+{
+	color: white;
+	font-size: 40px;
+}
+
+h2
+{
+	color: white;
+	font-size: 15px;
+}
+
+h3
+{
+	color: white;
+	font-size: 25px;
+}
+
+#score, #time
+{
+    text-align: center;
+}
+
+#menuDiv
+{
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	width: 100%;
+	height: 35px;
+	text-align: center;
+	align-self: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.buttons
+{
+	padding: 0.7em 5em;
+	color: black;
+	background: orchid;
+}
+
+.homeButtons
+{
+	padding: 1.2em 8em;
+	color: black;
+	background: orchid;
+}
+
+.buttons_end_game
+{
+	color: white;
+	padding: 0.4em 2em;
+	font-size: 15px;
+	background: rgb(45, 43, 43);
+	text-align: center;
+}
+
+.buttons_end_game:hover
+{
+	background-color: rgb(100, 96, 96);
+}
+
+.buttons:hover, .homeButtons:hover
+{
+	background-color: white;
+}
+
+li
+{
+	display:inline;
+	text-align: center;
+	align-self: center;
+	font-size: 25px;
+	font-weight: bold;
+	width: 14%;
+	font-style: italic;
+	margin-left: 50px;
+    color: white;
+	text-decoration: none;
+}
+
+#canvas
+{
+    border: 5px solid pink;
+	background-color:#100f0f;
+}
+
+#Footer
+{
+	background-color: #2c3e50;
+	text-align: center;
+}
+
+#Names
+{
+	font-size: 15px;
+}
+
+form label,
+form input,
+form button {
+  border: 0;
+  margin-bottom: 3px;
+  display: block;
+  width: 100%;
+}
+
+form input {
+	height: 25px;
+	line-height: 25px;
+	background: #fff;
+	color: #000;
+	padding: 0 6px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+  }
+
+  form button {
+	height: 30px;
+	line-height: 30px;
+	width: 300px;
+	background: #f68bfb;
+	color: #fff;
+	margin-top: 10px;
+	cursor: pointer;
+  }
+
+  form {
+	padding: 20px;
+	background: #2c3e50;
+	color: #fff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+  }
+
+  form .error {
+	color: #ff0000;
+  }
+
+  
+div.settingOption {
+    position: fixed;
+    top:5%;
+    color: blanchedalmond;
+    text-align: center;
+    left:15%;
+}
+
+table.settingtable, .setting-input{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#dynamic_balls, #dynamic_time
+{
+	width: 100px;
+	text-align: center;
+	color: #FFF;
+	background: transparent;
+	display: block;
+    margin:auto;
+}
+
+.settings_btn_ment
+{
+	justify-content: center;
+	align-items: center;
+}
+
+.Keys_in
+{
+	text-align: center;
+	color: black;
+	font-size: 15px;
+	width: 100px;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+.Keys_in:focus
+{
+	color: rgb(197, 85, 104);
+	border-color: rgb(197, 85, 104);
+}
+
+.popupContainer
+{
+	display: none;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	padding-top: 10%;
+	z-index: 1;
+	overflow: auto;
+}
+
+.popupContent
+{
+	background: url("media/about_back.jpg");
+	height: 80%;
+	width: 30%;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+}
+
+.popupContainer_end_game
+{
+	display: none;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	padding-top: 10%;
+	z-index: 1;
+	overflow: auto;
+}
+
+.popupContent_end_game
+{
+	background: url("media/about_back.jpg");
+	height: 55%;
+	width: 30%;
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #888;
+}
+
+#end_game_button_div
+{
+	padding-right: 7%;
+}
+
+.closeButton {
+	color: white;
+	float: left;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: yellow;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.keys_input_disply
+{
+	text-align: center;
+}
+
+#ghost_number_display, #time_to_play_display, #balls_number_display, #lblScore, #lblusername
+{
+	text-align: center;
+}
+
+#lblusername
+{
+	font-size: 20px;
+}

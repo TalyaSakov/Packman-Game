@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PacMan Game</title>
+		<script src="AllScripts/jquery-3.4.1.slim.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="AllScripts/app.js"></script>
+		<script type="text/javascript" src="AllScripts/window.js"></script>
+		<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+		<script type="text/javascript" src="AllScripts/jquery.validate.min.js"></script>
+		<script src="AllScripts/form-validation.js"></script>
+		<script type="text/javascript" src="AllScripts/settings.js"></script>
+	
+		
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="icon" href="media/pacman_icons/pacman_right.png" type="image/png" sizes="20x20">
+	</head>
+
+	<body>
+		<div id="gameHeader">
+			<header>
+				<img src=media/header.png width=400 height=100 class="images"/>
+				<h2>Talya Sakov & Naama Baruch</h2>
+			  </header>
+		</div>
+		<br>
+		<br>
+		<div id="menuDiv">
+			<li><button class="buttons" id="home_button" onclick="changeDiv('homeDiv')">HOME</button></li>
+			<li><button class="buttons" id="register_button" onclick="changeDiv('registerDiv')">REGISTER</button></li>
+			<li><button class="buttons" id="login_button" onclick="changeDiv('loginDiv')">LOGIN</button></li>
+			<li><button class="buttons" id="about_button" onclick="aboutOn()">ABOUT</button></li>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div id="ScreenItems">
+
+			<div id="dPopupContainer" class="popupContainer">
+				<div id="dPopupContent" class="popupContent">
+					<span class="closeButton" onclick="aboutOff()">&times;</span>
+					<h3>About Us</h3>
+					<h2>Hi,<br>We are Talya and Naame, nice to meet you!</h2>
+					<h2>In this game, we used Jquery in order to validate the registration form.</h2>
+					<br>
+					<h2>Difficulties we encountered with:<br>creating the modal window for the "about" section. 
+						<br>How did we solve this eventually?<br>We found in Google a tutorial video that demonstrates 
+						how to do this step by step.</h2>
+				</div>
+			</div>
+
+			<div id="dPopupContainer_endGame" class="popupContainer_end_game">
+				<div id="dPopupContent_endGame" class="popupContent_end_game">
+					<h3>GAME OVER!</h3>
+					<label id="message_end_game_label" style="color: white; font-size: 20px;"></label>
+					<br>
+					<h2>Your score:</h2>
+					<label id="score_end_game_label" style="color: white;"></label>
+					<br><br>
+					<div id="end_game_button_div">
+						<button class="buttons_end_game" id="restart_game" style="margin-left: 10%;" onclick="gameOverOff('play')">PLAY AGAIN</button>
+						<button class="buttons_end_game" id="home_button_end_game" onclick="gameOverOff('home')">BACK HOME</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="homeDiv" class="windowDivs">
+				<h1>Hi player!</h1>
+				<h3>We are so glad you joined us!</h3>
+				<img src=media/pacman_icons/pacman_hello.png width=230 height=200 class="images"/>
+				<br>
+				<br>
+			</div>
+
+			<div id="registerDiv" class="windowDivs">
+				<h1>Register</h1>
+				<form id="registrationForm" name="registration">
+
+					<label for="UserName">User Name</label>
+					<input type="text" name="UserName" id="UserName" class="FormInput" placeholder="Enter user name.."/>
+					<br>
+				
+					<label for="Password">Password</label>
+					<input type="password" name="Password" id="Password" class="FormInput" placeholder="Choose your password.."/>
+					<br>
+
+					<label for="FullName">Full Name</label>
+					<input type="text" name="FullName" id="FullName" class="FormInput" placeholder="Enter full name.."/>
+					<br>
+				
+					<label for="Email">Email</label>
+					<input type="email" name="Email" id="Email" class="FormInput" placeholder="Enter your E-mail.."/>
+					<br>
+
+					<label for="BirthDate">Birth Date</label>
+					<input type="date" name="BirthDate" id="BirthDate" class="FormInput" value="2000-01-01" min="1923-01-01" max="2023-01-01"/>
+					<br>
+				
+					<button type="submit">Save</button>	
+				  </form>
+				  <br>
+				  <h2>Please, Join Us!</h2>
+				  <br><br>
+			</div>
+
+			<div id="loginDiv" class="windowDivs">
+				<h1>LOGIN</h1>
+				<form id="loginForm" name="login">
+					<label for="UserName">User Name</label>
+					<input type="text" name="UserName" id="UserNameLogin" class="FormInput" placeholder="Enter user name.." required/>
+					<br>
+					
+					<label for="Password">Password</label>
+					<input type="password" name="Password" id="PasswordLogin" class="FormInput" placeholder="Choose your password.." required/>
+					<br>
+					<button type="submit" onclick="LoginUser()">Login</button>
+				  </form>
+				  <br>
+				<h2>We're so happy to see you again!!</h2>
+				<br>
+			</div>
+
+			<div id="settingsDiv" class="windowDivs">
+				<form id="settingForm" name="settings">
+					<div id="keys_div">
+					<h2>Settings</h2>
+					<h2>Enter the settings manually or click the random button</h2>
+							<table id="keys" class="settingtable" >
+								<p style="display: inline-block;line-height: 0.7; font-size: 20px;">Select keyboard buttons:</p>
+								<tr>
+									<!--row 1-->
+									<th style="font-size: 15px;">Left</th>
+									<th style="font-size: 15px;">Up</th>
+									<th style="font-size: 15px;">Down</th>
+									<th style="font-size: 15px;">Right</th>
+								</tr>
+								<tr>
+									<!--row 2-->
+									<td>
+										<input class="Keys_in" type="button" value="⇦" id="leftKey" onclick="getChoosenKey('leftKey')" >
+									</td>
+									<td>
+										<input class="Keys_in" type="button" value="⇧" id="upKey" onkeydown="getChoosenKey('upKey')">
+									</td>
+									<td>
+										<input class="Keys_in" type="button" value="⇩" id="downKey"onkeydown="getChoosenKey('downKey')">
+									</td>
+									<td>
+										<input class="Keys_in" type="button" value="➪" id="rightKey" onkeydown="getChoosenKey('rightKey')">
+									</td>
+								</tr>
+				
+								<!--row 3: -->
+								<tr>
+									<td>
+										<i  id="left" hight="20" width="20" style="display: none;"></i>
+									</td>
+									<td>
+										<i  id="up" hight="20" width="20" style="display: none;"></i>
+									</td>
+									<td>
+										<i  id="down" hight="20" width="20" style="display: none;"></i>
+									</td>
+									<td>
+										<i  id="right" hight="20" width="20" style="display: none;"></i>
+									</td>
+								</tr>
+							</table> <!--key table-->	
+						</div><!--end of keys-->
+						
+						<br>
+						
+						<div id="num_of_ghost">
+							<div class="num of ghost">
+								<p style="display: inline-block;line-height: 0.7;">Select number of ghosts:</p>
+									<table class="settingtable">
+								<!--row 1-->
+								<tr>
+									<td>
+										1<input type="checkbox" name="skill" class="check" value=1 id="check1" checked>
+									</td>
+									<td style="padding-left: 17px">
+										2<input type="checkbox" name="skill" class="check" value=2 id="check2">
+									</td>
+									<td style="padding-left: 17px">
+										3<input type="checkbox" name="skill" class="check" value=3 id="check3">
+									</td>
+									<td style="padding-left: 17px">
+										4<input type="checkbox" name="skill" class="check" value=4 id="check4">
+									</td>
+								</tr>
+							</table><!--ghost table-->
+						</div> 				
+						</div><!--end num of ghost-->
+						<br>
+
+						<div class="num of balls">
+							<p style="display: inline ;line-height: 0.5; color: aliceblue;">Choose number of balls between 50 to 90:</p>
+						<input id="num_of_balls" type="range" name="num_of_balls" value="50" min="50" max="90" oninput="dynamic_balls.value = this.value" class="setting-input">
+						<input value="50" id="dynamic_balls">
+						</div><!--end num of balls-->
+						<br>
+
+						<div id="color">
+							<p style="line-height: 0.5; color: aliceblue;">Choose colors:</p>
+							<table class="settingtable">
+								<!--row 1-->
+								<tr>
+									<th>5 Points</th>
+									<th style="padding-left: 15px">15 Points</th>
+									<th style="padding-left: 15px">25 Points</th>
+								</tr>
+				
+								<!--row 2-->
+								<tr>
+									<td>
+										<input type="color" id="5pointsColor" name="5points" value="#C8A6DC">
+									</td>
+									<td style="padding-left: 15px">
+										<input type="color" id="15pointsColor" name="15points" value="#6BECE1">
+									</td>
+									<td style="padding-left: 15px">
+										<input type="color" id="25pointsColor" name="25points" value="#F12ACA">
+									</td>
+								</tr>
+							</table><!--color table-->
+						</div> <!--end color-->
+						<br>
+
+						<div id="time-picker">
+							<p style="display: inline-block; line-height: 0.5;">Choose game length (in seconds): </p>
+							<input id="time" type="range" name="time" value="60" min="60" max="180" oninput="dynamic_time.value = this.value" class="setting-input">
+							<input value="60" id="dynamic_time">
+
+						</div> <!--end time-->
+						
+						
+						<div id="randomBtn" class="settings_btn_ment">
+							<br>
+							<button class="set_btn" style="display:block; margin: 0 auto;" type="button" onclick="setRandom()">Generate Random Settings</button>
+							<br>
+						</div> <!--end random-->
+						<div id="startGameBtn" class="settings_btn_ment">
+							<button class="set_btn" style="display:block; margin: 0 auto;" type="button" onclick="startPlay()">Start The Game</button>
+						</div>
+
+
+					</form>
+				</div><!--settings-->
+
+			<div id="GameDiv" class="windowDivs">
+				<table class="game_table" style="width: 100%">
+					<colgroup>
+						<col span="1" style="width: 25%;">
+						<col span="1" style="width: 75%;">
+					 </colgroup>
+					<tr>
+						<td>
+							<div id="settings_display">
+								<form id="settingDisplayForm" name="settingDisplayForm">
+									<div id="gameProgressDisplay">
+										<h3>Game Progress:</h3>
+										<table class="gameDisplay">
+											<tr>
+												<th style="padding-left: 15px"><label for="lblScore">SCORE:</label></th>
+												<th style="padding-left: 15px"><label for="lblTime">TIME:</label></th>
+											</tr>
+											<tr>
+												<td style="padding-left: 15px">
+													<input id="lblScore" type="text" />
+												</td>
+												<td style="padding-left: 15px">
+													<input id="lblTime" style="text-align: center" type="text" />
+												</td>
+											</tr>
+										</table>
+									</div>
+									<br>
+									<div id="all_lives_display">
+										<img id="pacman_lives_display" style="height: 25px;" src="media/lives/live_5.jpeg"></a>
+									</div>
+									<h3>Settings</h3>
+									<label for="lblusername" style="display: inline-block;line-height: 0.7; font-size: 15px;">Player:</label>
+									<input id="lblusername" type="text"/>
+									<div id="keys_display">
+										<table id="teable_display" class="settingtable" >
+											<p style="display: inline-block;line-height: 0.7; font-size: 15px;">keyboard Buttons:</p>
+											<tr>
+												<!--row 1-->
+												<th style="font-size: 15px;">Left</th>
+												<th style="font-size: 15px;">Up</th>
+												<th style="font-size: 15px;">Down</th>
+												<th style="font-size: 15px;">Right</th>
+											</tr>
+											<tr>
+												<!--row 2-->
+												<td>
+													<input class="keys_input_disply" id="left_key" type="text" readonly="readonly"/>
+												</td>
+												<td>
+													<input class="keys_input_disply" id="up_key" type="text" readonly="readonly"/>
+												</td>
+												<td>
+													<input class="keys_input_disply" id="down_key" type="text" readonly="readonly"/>
+												</td>
+												<td>
+													<input class="keys_input_disply" id="right_key" type="text" readonly="readonly"/>
+												</td>
+											</tr>
+										</table> <!--key table-->	
+									</div><!--end of keys-->
+									<br>
+									
+									<div>
+										<div>
+											<p style="display: inline-block;line-height: 0.7; font-size: 15;">Ghosts Number:</p>
+											<input id="ghost_number_display" type="text" readonly="readonly"/>
+										</div> 				
+									</div><!--end num of ghost-->
+									<br>
+							
+									<div>
+										<div>
+											<p style="display: inline-block;line-height: 0.7; font-size: 15px;">Total Amount Of Balls:</p>
+											<input id="balls_number_display" type="text" readonly="readonly"/>
+										</div> 				
+									</div>
+									<br>
+					
+									<div id="colorDisplay">
+										<p style="display: inline-block;line-height: 0.7; font-size: 15px;">Colors And Amount Of Balls:</p>
+										<table class="settingtable">
+											<!--row 1-->
+											<tr>
+												<th>5 Points</th>
+												<th style="padding-left: 15px">15 Points</th>
+												<th style="padding-left: 15px">25 Points</th>
+											</tr>
+											<!--row 2-->
+											<tr>
+												<td style="padding-left: 15px">
+													<input id="5pointsColor_display" style="text-align:center" type="text" readonly="readonly"/>
+												</td>
+												<td style="padding-left: 15px">
+													<input id="15pointsColor_display" style="text-align:center" type="text" readonly="readonly"/>
+												</td>
+												<td style="padding-left: 15px">
+													<input id="25pointsColor_display" style="text-align:center" type="text" readonly="readonly"/>
+												</td>
+											</tr>
+										</table><!--color table-->
+									</div> <!--end color-->
+									<div>
+										<div>
+											<p style="display: inline-block;line-height: 0.7; font-size: 15px;">Time To Play (in seconds):</p>
+											<input id="time_to_play_display" type="text" readonly="readonly"/>
+										</div> 				
+									</div>
+									<br>
+									</form>
+								</div>
+						</td>
+						<td>
+							<div id="game" class="gameDiv">
+								<canvas id="canvas" height="600" width="600"></canvas>
+							</div>
+							<br>
+							<br>
+							<button class="buttons" id="settings_button" style="margin-left: 10%;" onclick="changeDiv('settingsDiv')">RESET SETTINGS</button>
+							<h2 style="margin-left: 10%; color: orchid;">* This action will reset the game too..</h2>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		</div>
+		<div id="Footer">
+			<footer>
+				<li id="Names">© Talya Sakov & Naama Baruch</li>
+				<br>
+				<li style="font-size: 13px;">Contact us through our Linkedin pages...</li>
+				<br>
+				<li>
+					<a href="https://www.linkedin.com/in/talya-sakov-733b9a202/">
+					  <img src="media/LinkedInSymbole.png" width="30px" height="17px"></a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/naama-baruch-b2b59a1b7/">
+					  <img src="media/LinkedInSymbole.png" width="30px" height="17px"></a>
+				</li>
+			</footer>
+		</div>
+	</body>
+
+</html>
+
+
